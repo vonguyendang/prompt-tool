@@ -1,0 +1,102 @@
+[
+  {
+    "category": "Email",
+    "name": "Black Friday Sale",
+    "idea": "Write a Black Friday email for a fashion brand in Vietnam targeting Gen Z."
+  },
+  {
+    "category": "Email",
+    "name": "Job Application Cold Email",
+    "idea": "Write a cold email to a CEO applying for a Senior Developer role."
+  },
+  {
+    "category": "Email",
+    "name": "Customer Apology",
+    "idea": "Apologize to a customer for a late delivery and offer a discount."
+  },
+  {
+    "category": "Email",
+    "name": "Newsletter Welcome",
+    "idea": "Welcome new subscribers to a tech newsletter. Friendly tone."
+  },
+  {
+    "category": "Email",
+    "name": "Meeting Follow-up",
+    "idea": "Follow up after a sales meeting. Recap key points and next steps."
+  },
+  {
+    "category": "Code",
+    "name": "Python Data Cleaning",
+    "idea": "Write a Python script to clean a pandas DataFrame with missing values."
+  },
+  {
+    "category": "Code",
+    "name": "React Component",
+    "idea": "Create a reusable React button component with Tailwind CSS."
+  },
+  {
+    "category": "Code",
+    "name": "SQL Query Optimization",
+    "idea": "Optimize a slow SQL query joining 3 large tables."
+  },
+  {
+    "category": "Code",
+    "name": "Regex Email Validation",
+    "idea": "Regex to validate email addresses including edge cases."
+  },
+  {
+    "category": "Code",
+    "name": "Docker Compose Setup",
+    "idea": "Create a docker-compose.yml for a PHP, MySQL, and Nginx stack."
+  },
+  {
+    "category": "Content",
+    "name": "LinkedIn Viral Post",
+    "idea": "Write a viral LinkedIn post about the future of AI in 2025."
+  },
+  {
+    "category": "Content",
+    "name": "Blog Post Outline",
+    "idea": "Create a detailed outline for a blog post about 'Healthy Eating for Busy People'."
+  },
+  {
+    "category": "Content",
+    "name": "YouTube Video Script",
+    "idea": "Script for a 1-minute YouTube Short about 'Top 3 productivity hacks'."
+  },
+  {
+    "category": "Content",
+    "name": "Instagram Captions",
+    "idea": "5 engaging Instagram captions for a travel photo in Da Lat."
+  },
+  {
+    "category": "Content",
+    "name": "Twitter Thread",
+    "idea": "Write a Twitter thread explaining Blockchain to a 5-year-old."
+  },
+  {
+    "category": "Business",
+    "name": "Product Launch Strategy",
+    "idea": "Outline a launch strategy for a new SaaS product."
+  },
+  {
+    "category": "Business",
+    "name": "SWOT Analysis",
+    "idea": "Perform a SWOT analysis for a local coffee shop competitor."
+  },
+  {
+    "category": "Business",
+    "name": "Interview Questions",
+    "idea": "10 behavioral interview questions for a Project Manager role."
+  },
+  {
+    "category": "Business",
+    "name": "Value Proposition",
+    "idea": "Draft a unique value proposition for an eco-friendly water bottle."
+  },
+  {
+    "category": "Business",
+    "name": "Meeting Agenda",
+    "idea": "Create an agenda for a quarterly team planning meeting."
+  }
+]
