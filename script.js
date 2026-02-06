@@ -59,6 +59,7 @@ const els = {
     lblResult: document.getElementById('lblResult'),
     lblLength: document.getElementById('lblLength'),
     lblStrict: document.getElementById('lblStrict'),
+    lblPasteTip: document.getElementById('lblPasteTip'),
 
     // Global
     themeToggle: document.getElementById('themeToggle'),
@@ -127,6 +128,64 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 // Expose for debugging
 window.setLang = setLang;
+window.openAIResource = openAIResource; // Expose global for onclick in HTML
+
+function openAIResource(service) {
+    if (!generatedPrompt) {
+        updatePromptPreview(); // Ensure prompt exists
+    }
+    const text = generatedPrompt;
+    if (!text) return alert("Please generate a prompt first!");
+
+    // Always copy to clipboard first as a fallback/convenience
+    navigator.clipboard.writeText(text).then(() => {
+        // Show temp toast or just proceed
+    });
+
+    const encoded = encodeURIComponent(text);
+    let url = '';
+
+    switch (service) {
+        case 'chatgpt':
+            // Try temporary-chat to avoid history clutter and force new context, q= is standard
+            url = `https://chatgpt.com/?q=${encoded}&hints=search&temporary-chat=true`;
+            break;
+        case 'gemini':
+            // Try ?text= which sometimes works for app, fallback to main if redirect strips it
+            url = `https://gemini.google.com/app?text=${encoded}`;
+            break;
+        case 'perplexity':
+            url = `https://www.perplexity.ai/?q=${encoded}`;
+            break;
+        case 'deepseek':
+            // DeepSeek doesn't officially support query params yet.
+            // We rely 100% on clipboard here.
+            url = `https://chat.deepseek.com/`;
+            break;
+        case 'claude':
+            // New chat specific URL
+            url = `https://claude.ai/new?q=${encoded}`;
+            break;
+    }
+
+    // UX Feedback - Explicitly tell user if auto-fill is flaky
+    const btn = event.currentTarget;
+    const originalContent = btn.innerHTML;
+
+    // Different feedback for DeepSeek/Gemini where auto-fill is known to be weak
+    if (service === 'deepseek' || service === 'gemini') {
+        btn.innerHTML = '<span>📋</span> <span>Copied! Paste in Chat</span>';
+    } else {
+        btn.innerHTML = '<span>🚀</span> <span>Opening...</span>';
+    }
+
+    // Open URL
+    window.open(url, '_blank');
+
+    setTimeout(() => {
+        btn.innerHTML = originalContent;
+    }, 2500);
+}
 
 function setLang(lang, isAutoSwitch = false) {
     promptLang = lang;
@@ -150,6 +209,7 @@ function setLang(lang, isAutoSwitch = false) {
         if (els.lblResult) els.lblResult.textContent = 'KẾT QUẢ (RESULT)';
         if (els.lblLength) els.lblLength.textContent = 'ĐỘ DÀI';
         if (els.lblStrict) els.lblStrict.textContent = 'TUÂN THỦ';
+        if (els.lblPasteTip) els.lblPasteTip.innerHTML = '💡 Mẹo: Sau khi mở, nhấn <kbd class="font-sans font-bold bg-gray-100 dark:bg-gray-800 px-1 rounded">Cmd+V</kbd> (Mac) hoặc <kbd class="font-sans font-bold bg-gray-100 dark:bg-gray-800 px-1 rounded">Ctrl+V</kbd> (Win) để dán prompt.';
     } else {
         if (els.lblRole) els.lblRole.textContent = 'ROLE';
         if (els.lblSituation) els.lblSituation.textContent = 'SITUATION';
@@ -158,6 +218,7 @@ function setLang(lang, isAutoSwitch = false) {
         if (els.lblResult) els.lblResult.textContent = 'RESULT (FORMAT)';
         if (els.lblLength) els.lblLength.textContent = 'LENGTH';
         if (els.lblStrict) els.lblStrict.textContent = 'STRICT';
+        if (els.lblPasteTip) els.lblPasteTip.innerHTML = '💡 Tip: After opening, press <kbd class="font-sans font-bold bg-gray-100 dark:bg-gray-800 px-1 rounded">Cmd+V</kbd> (Mac) or <kbd class="font-sans font-bold bg-gray-100 dark:bg-gray-800 px-1 rounded">Ctrl+V</kbd> (Win) to paste prompt.';
     }
 
     // Auto-Translate Content if manual switch and content exists

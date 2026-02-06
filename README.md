@@ -10,7 +10,9 @@ A futuristic, mobile-first web tool that transforms simple ideas into profession
 ### 🎨 Liquid Glass UI (iOS 26 Style)
 - **Immersive Design**: Deep animated gradient backgrounds and translucent glassmorphism panels.
 - **Neon Accents**: Glowing inputs and "liquid" buttons for a premium futuristic feel.
-- **Mobile First**: Fully responsive layout optimized for all devices.
+### 📱 Mobile First Experience
+- **Smart Adaptive Layout**: Automatically switches from a 3-column "App View" on desktop to a smooth **vertical scrolling feed** on mobile.
+- **Touch Optimized**: No annoying nested scrollbars. Liquid inputs and buttons designed for thumbs.
 
 ### 🧠 Smart Bilingual Engine
 - **Context-Aware Auto-Fill**:
